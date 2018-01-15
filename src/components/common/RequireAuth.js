@@ -1,0 +1,45 @@
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+export default function (ComposedComponent) {
+  class Authentication extends Component {
+    // static contextTypes = {
+    //   router: React.PropTypes.object,
+    // }
+
+    componentWillMount() {
+      console.log('componentWillMount ' + (this.props.authenticated ? "true" : "false"));
+      if (!this.props.authenticated) {
+        this.context.router.push('/login');
+      }
+    }
+
+    componentWillUpdate(nextProps) {
+      console.log('componentWillMount ' + (this.props.authenticated ? "true" : "false"));
+      if (!nextProps.authenticated) {
+        // this.context.router.push('/courses');
+        this.context.router.push('/login');
+      }
+    }
+
+    render() {
+      return <ComposedComponent {...this.props} />;
+    }
+  }
+
+  // Authentication.propTypes = {
+  //   authenticated: PropTypes.boolean
+  // };
+
+
+  //Pull in the React Router context so router is available on this.context.router.
+  Authentication.contextTypes = {
+    router: PropTypes.object
+  };
+
+  function mapStateToProps(state) {
+    return { authenticated: state.authenticated };
+  }
+
+  return connect(mapStateToProps)(Authentication);
+}
