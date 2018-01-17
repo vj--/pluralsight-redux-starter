@@ -18,6 +18,8 @@ export default (
     <Route path="courses" component={Authentication(CoursePage)} />
     <Route path="login" component={Login} />
 
+    <Route path="twittersuccess/:authenticated" component={LoginResult} />
+
     <Route path="*" component={FourOFour} />
   </Route>
 );

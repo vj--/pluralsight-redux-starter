@@ -2,5 +2,6 @@ export default {
   authors: [],
   courses: [],
   ajaxCallsInProgress: 0,
-  authenticated: false
+  authenticated: 0,
+  oauthToken: ""
 };

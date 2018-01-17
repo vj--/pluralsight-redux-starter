@@ -3,6 +3,7 @@ import initialState from './initialState';
 
 export default function authReducer(state = initialState.authenticated, action) {
   switch (action.type) {
+    
 
     default:
       return state;
