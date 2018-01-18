@@ -9,30 +9,32 @@ class Login extends React.Component {
     super(props, context);
   }
 
-  render() {
-    console.log("Twitter Ret in render(): " + this.props.twitterret);
-    if(this.props.twitterret == 1){
+  componentWillMount() {
+    console.log('componentWillMount ' + (this.props.authenticated));
+    if (this.props.twitterret == 1 || this.props.authenticated == 1) {
       this.props.actions.authenticationSuccess();
       browserHistory.push('/courses');
-      return(
-        <div>
-          <h1>Success!</h1>
-        </div>
-      )
-    } else {
+      // this.context.router.push('/login');
+    }
+  }
+
+  render() {
+    console.log("Twitter Ret in render(): " + this.props.twitterret);
+    console.log("Twitter Ret in render(): " + this.props.authenticated);
       return(
         <div>
           <h1>Please Login</h1>
           <a href="http://localhost:8888/" target="_self">Sign in with Twitter</a>
         </div>
       )
-    }
+    // }
   }
 }
 
 Login.PropTypes = {
   twitterret: PropTypes.Integer,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  authenticated: PropTypes.number
 }
 
 function mapStateToProps(state, ownProps) {
@@ -41,7 +43,8 @@ function mapStateToProps(state, ownProps) {
 
   return {
     twitterret: twitterVal,
-    token: state.oauthToken
+    token: state.oauthToken,
+    authenticated: state.authenticated
   };
 }
 

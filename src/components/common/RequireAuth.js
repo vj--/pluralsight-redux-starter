@@ -8,15 +8,15 @@ export default function (ComposedComponent) {
     // }
 
     componentWillMount() {
-      console.log('componentWillMount ' + (this.props.authenticated ? "true" : "false"));
-      if (!this.props.authenticated) {
+      console.log('componentWillMount ' + this.props.authenticated);//(this.props.authenticated ? "true" : "false"));
+      if (this.props.authenticated != 1) {
         this.context.router.push('/login');
       }
     }
 
     componentWillUpdate(nextProps) {
-      console.log('componentWillMount ' + (this.props.authenticated ? "true" : "false"));
-      if (!nextProps.authenticated) {
+      console.log('componentWillUpdate' + this.props.authenticated);
+      if (nextProps.authenticated != 1) {
         // this.context.router.push('/courses');
         this.context.router.push('/login');
       }

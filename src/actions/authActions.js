@@ -11,8 +11,14 @@ export function tokenRequestSuccess(token) {
   return { type: types.TOKEN_REQUEST_SUCCESS, token};
 }
 
-export function authenticationSuccess() {
-  return {type: types.AUTHENTICATION_SUCCESS };
+export function authenticationSuccess(authenticated=1) {
+  console.log("authenticationsuccess called");
+  return {type: types.AUTHENTICATION_SUCCESS, authenticated };
+}
+
+export function doLogout(authenticated=0) {
+  console.log("Do logout");
+  return {type: types.AUTHENTICATION_SUCCESS, authenticated};
 }
 
 // function getAuthorization() {
