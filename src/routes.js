@@ -17,8 +17,7 @@ export default (
     <Route path="course/:id" component={Authentication(ManageCoursePage)} />
     <Route path="courses" component={Authentication(CoursePage)} />
     <Route path="login" component={Login} />
-
-    <Route path="twittersuccess/:authenticated" component={LoginResult} />
+    <Route path="Login/:authenticated" component={Login} />
 
     <Route path="*" component={FourOFour} />
   </Route>

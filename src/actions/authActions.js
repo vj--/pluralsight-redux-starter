@@ -11,6 +11,10 @@ export function tokenRequestSuccess(token) {
   return { type: types.TOKEN_REQUEST_SUCCESS, token};
 }
 
+export function authenticationSuccess() {
+  return {type: types.AUTHENTICATION_SUCCESS };
+}
+
 // function getAuthorization() {
 //   const oauth = OAuth({
 //     consumer: { key: '<your consumer key>', secret: '<your consumer secret>'},
