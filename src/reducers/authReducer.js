@@ -7,6 +7,10 @@ export default function authReducer(state = initialState.authenticated, action) 
       return action.authenticated;
       break;
 
+    case types.UNAUTH_USER:
+      return action.authenticated;
+      break;
+
     default:
       return state;
   }

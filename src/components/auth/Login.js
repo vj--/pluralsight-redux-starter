@@ -11,16 +11,29 @@ class Login extends React.Component {
 
   componentWillMount() {
     console.log('componentWillMount ' + (this.props.authenticated));
-    if (this.props.twitterret == 1 || this.props.authenticated == 1) {
-      this.props.actions.authenticationSuccess();
-      browserHistory.push('/courses');
+    if (this.props.authenticated == 1) {
+      this.context.router.push('/courses');
       // this.context.router.push('/login');
+    } else if(this.props.twitterret == 1) {
+      this.props.actions.authenticationSuccess();
+      this.context.router.push('/courses');
     }
   }
 
+  // componentWillUpdate(){
+  //   console.log('componentWillUpdate ' + (this.props.authenticated));
+  //   if (this.props.authenticated == 1) {
+  //     // this.context.router.push('/courses');
+  //     // this.context.router.push('/login');
+  //   } else if(this.props.twitterret == 1) {
+  //     // this.props.actions.authenticationSuccess();
+  //     // this.context.router.push('/courses');
+  //   }
+  // }
+
   render() {
     console.log("Twitter Ret in render(): " + this.props.twitterret);
-    console.log("Twitter Ret in render(): " + this.props.authenticated);
+    console.log("authenticated in render(): " + this.props.authenticated);
       return(
         <div>
           <h1>Please Login</h1>
@@ -31,11 +44,16 @@ class Login extends React.Component {
   }
 }
 
-Login.PropTypes = {
-  twitterret: PropTypes.Integer,
-  actions: PropTypes.object.isRequired,
-  authenticated: PropTypes.number
-}
+//Pull in the React Router context so router is available on this.context.router.
+Login.contextTypes = {
+  router: PropTypes.object
+};
+
+// Login.PropTypes = {
+//   twitterret: PropTypes.Integer
+//   // actions: PropTypes.object.isRequired
+  // authenticated: PropTypes.number.isRequired
+// }
 
 function mapStateToProps(state, ownProps) {
   // authenticated will be 1 for success,

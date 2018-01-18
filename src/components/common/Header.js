@@ -18,7 +18,9 @@ const Header = ({loading, authenticated, logout}) => {
 };
 
 Header.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  authenticated: PropTypes.number.isRequired,
+  logout: PropTypes.func
 };
 
 export default Header;

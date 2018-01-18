@@ -18,7 +18,7 @@ export function authenticationSuccess(authenticated=1) {
 
 export function doLogout(authenticated=0) {
   console.log("Do logout");
-  return {type: types.AUTHENTICATION_SUCCESS, authenticated};
+  return {type: types.UNAUTH_USER, authenticated};
 }
 
 // function getAuthorization() {

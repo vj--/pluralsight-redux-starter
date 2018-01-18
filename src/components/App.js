@@ -16,6 +16,7 @@ class App extends React.Component {
         <Header
           loading={this.props.loading}
           authenticated={this.props.authenticated}
+          logout={this.props.actions.doLogout}
         />
         {this.props.children}
       </div>
@@ -26,8 +27,8 @@ class App extends React.Component {
 App.propTypes = {
   children: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
-  authenticated: PropTypes.number,
-  actions: PropTypes.object.isRequired
+  // authenticated: PropTypes.number.isRequired,
+  // actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

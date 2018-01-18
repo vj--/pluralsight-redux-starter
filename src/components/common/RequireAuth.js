@@ -8,14 +8,14 @@ export default function (ComposedComponent) {
     // }
 
     componentWillMount() {
-      console.log('componentWillMount ' + this.props.authenticated);//(this.props.authenticated ? "true" : "false"));
+      console.log('componentWillMount R ' + this.props.authenticated);//(this.props.authenticated ? "true" : "false"));
       if (this.props.authenticated != 1) {
         this.context.router.push('/login');
       }
     }
 
     componentWillUpdate(nextProps) {
-      console.log('componentWillUpdate' + this.props.authenticated);
+      console.log('componentWillUpdate R ' + this.props.authenticated);
       if (nextProps.authenticated != 1) {
         // this.context.router.push('/courses');
         this.context.router.push('/login');
@@ -28,7 +28,7 @@ export default function (ComposedComponent) {
   }
 
   // Authentication.propTypes = {
-  //   authenticated: PropTypes.boolean
+  //   authenticated: PropTypes.number.isRequired
   // };
 
 
